@@ -10,7 +10,7 @@ module.exports = class AuthController {
         email,
         password,
       });
-      res.status(200).json({ id: user.id, email: user.email });
+      res.status(201).json({ id: user.id, email: user.email });
     } catch (error) {
       next(error);
     }
