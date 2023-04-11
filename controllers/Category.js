@@ -1,4 +1,4 @@
-const { Category } = require("../models");
+const { Category, Unit } = require("../models");
 
 module.exports = class CategoryController {
   static async create(req, res, next) {
@@ -25,6 +25,10 @@ module.exports = class CategoryController {
       const id = req.params.id;
       const category = await Category.findOne({
         where: { id },
+        include: {
+          model: Unit,
+          as: "units",
+        },
       });
 
       if (!category)
